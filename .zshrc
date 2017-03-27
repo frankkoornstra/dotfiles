@@ -72,3 +72,7 @@ fpath=(~/.zsh-completion/src $fpath)
 
 # Commonly used dirs
 cdpath=($HOME/Projects)
+
+# useful aliases
+alias git-kablooy="git branch --merged | grep -v \"\\*\" | grep -v master | grep -v dev | xargs -n 1 git branch -d"
+alias lsl="ls -alh"
