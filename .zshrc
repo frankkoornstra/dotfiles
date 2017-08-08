@@ -1,3 +1,5 @@
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin
+
 # Path to your oh-my-zsh configuration.
 ZSH=~/.oh-my-zsh
 
@@ -45,13 +47,13 @@ ZSH_THEME="frank"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ssh-agent)
+plugins=(git git-extras ssh-agent last-working-dir sudo web-search)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
+# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # # Preferred editor for local and remote sessions
@@ -71,7 +73,7 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
 fpath=(~/.zsh-completion/src $fpath)
 
 # Commonly used dirs
-cdpath=($HOME/Projects)
+cdpath=($HOME/Projects $HOME/Downloads)
 
 # useful aliases
 alias git-kablooy="git branch --merged | grep -v \"\\*\" | grep -v master | grep -v dev | xargs -n 1 git branch -d"
