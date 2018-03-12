@@ -9,65 +9,12 @@ ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="frank"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Uncomment this to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment to change how often to auto-update? (in days)
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment following line if you want to disable marking untracked files under
-# VCS as dirty. This makes repository status check for large repositories much,
-# much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment following line if you want to the command execution time stamp shown 
-# in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras ssh-agent last-working-dir sudo web-search)
+plugins=(git git-extras ssh-agent last-working-dir sudo web-search docker docker-compose)
 
 source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # zsh completion
 fpath=(~/.zsh-completion/src $fpath)
@@ -75,6 +22,18 @@ fpath=(~/.zsh-completion/src $fpath)
 # Commonly used dirs
 cdpath=($HOME/Projects $HOME/Downloads)
 
+# So gpg can ask for passwords
+export GPG_TTY=$(tty)
+
 # useful aliases
-alias git-kablooy="git branch --merged | grep -v \"\\*\" | grep -v master | grep -v dev | xargs -n 1 git branch -d"
+alias git-kablooy="git branch | grep -v develop | grep -v master | grep -v \* | xargs git branch -D"
+alias grbm="git rebase -i origin/master"
+alias grbd="git rebase -i origin/develop"
 alias lsl="ls -alh"
+
+alias dc="docker-compose "
+alias dcu="docker-compose up -d "
+alias dcui="docker-compose up "
+alias dcs="docker-compose stop "
+alias dcr="docker-compose restart "
+alias dcb="docker-compose build "
