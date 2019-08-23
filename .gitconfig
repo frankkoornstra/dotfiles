@@ -1,5 +1,28 @@
 [alias]
-  p = push --force-with-leas
+  # Add
+  aa = add -A
+
+  # Push
+  pu = !git push --force-with-lease
+  pu1 = !git push -u origin HEAD
+
+  # Amend all changes and push
+  famend = !git add -A && git commit --amend --no-edit && git push --force-with-lease
+
+  # Work in progress commit
+  wip = !git add -A && git commit -m "WIP" && git push --force-with-lease
+
+  # Rebases
+  rbm = !git fetch && git rebase -i origin/master
+  rbc = !git rebase --continue
+  arbc = !git add -A && git rebase --continue
+
+  # Remove all local branches that don't exist remotely
+  # git branch | grep -v develop | grep -v master | grep -v \* | xargs git branch -D
+  kablooy = !git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d
+
+  # Commit
+  c = commit
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -12,9 +35,6 @@
 
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-
-	# Clone a repository including all submodules
-	c = clone --recursive
 
 	# Commit all changes
 	ca = !git add -A && git commit -av
@@ -132,7 +152,7 @@
 
 [commit]
 
-    # https://help.github.com/articles/signing-commits-using-gpg/
+  # https://help.github.com/articles/signing-commits-using-gpg/
 	gpgsign = false
 
 [diff]
@@ -174,6 +194,7 @@
 
   name = "Frank Koornstra"
   email = "frank.koornstra@usabilla.com"
+  signingkey = 09862985E7D4CDA4
 
 # URL shorthands
 
